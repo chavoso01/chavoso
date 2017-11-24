@@ -1,0 +1,23 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block corpo %}
+
+<div class="row section centralizar">
+	<div class="col s12 m6">
+        <div class="icon-block center">
+        	<img src="{%static 'imagens/porta.png' %}" alt="porta.png" height="124" width="120">
+            <h5>Selecione uma sala para reservar</h5>
+			<a class="waves-effect waves-light btn-large " href="{% url 'listar_salas' %}">Salas</a>
+    	</div>
+   	</div>
+
+    <div class="col s12 m6">
+    	<div class="icon-block center">
+        	<h2><i class="large material-icons">create</i></h2>
+            <h5>Selecione um material para reservar</h5>
+			<a class="waves-effect waves-light btn-large " href="{% url 'listar_materiais' %}">Materiais</a>
+    	</div>
+    </div>	
+	
+</div>  
+{% endblock %}

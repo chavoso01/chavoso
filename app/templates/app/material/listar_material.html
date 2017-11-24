@@ -1,0 +1,90 @@
+{% extends 'app/base.html' %}
+
+{% block corpo %}
+<style type="text/css">
+.modal {
+  max-height: 90%;
+}
+
+.modal-form-row {
+  margin-bottom: 0px;
+}
+</style>
+<table class="responsive-table striped centered">
+
+	<thead> 
+		<tr>
+			<th data-field="processo">Nome</th>
+			<th data-field="processo">localização</th>
+			<th data-field="processo">Número</th>
+			<th data-field="processo" colspan="2">Ações</th>
+		</tr>
+
+		
+	</thead>
+
+	<tbody>
+		<h1>Listar Materiais</h1>
+		{% for m in material %}
+		<tr>
+			<td>{{m.nome}}</td>
+			<td>{{m.localizacao}}</td>
+			<td>{{m.numero}}</td>
+			<td><a class="waves-effect waves-light btn modal-trigger" href="#material{{m.id}}">Detalhar</a></td>
+			<div id="material{{m.id}}" class="modal">
+	    		<div class="modal-content">
+		    		<div class="row">
+			      		<h4>Detalhes</h4>
+			      		<p class="c">Nome: {{m.nome}}</p>
+			      		<p>Localização: {{m.localizacao}}</p>
+			      		<p>Número: {{m.numero}}</p>
+			      		<div class="col s12 m4 center">
+			      			<h5>Manhã</h5>
+			      			<p>07:00 - 07:45:{{m.h1_Matutino}}</p>
+							<p>07:45 - 08:30:{{m.h2_Matutino}}</p>
+							<p>08:50 - 09:35:{{m.h3_Matutino}}</p>
+							<p>09:35 - 10:20:{{m.h4_Matutino}}</p>
+							<p>10:30 - 11:15:{{m.h5_Matutino}}</p>
+							<p>11:15 - 12:00:{{m.h6_Matutino}}</p>
+			      		</div>
+
+			      		<div class="col s12 m4 center">
+			      			<h5>Tarde</h5>
+			      			<p>13:00 - 13:45: {{m.h1_Vespertino}}</p>
+							<p>13:45 - 14:30: {{m.h1_Vespertino}}</p>
+			      			<p>14:50 - 15:35: {{m.h1_Vespertino}}</p>
+							<p>15:35 - 16:20: {{m.h1_Vespertino}}</p>
+							<p>16:30 - 17:15: {{m.h1_Vespertino}}</p>
+							<p>17:15 - 18:00: {{m.h1_Vespertino}}</p>
+			      		</div>
+
+			      		<div class="col s12 m4 center">
+			      			<h5>Noite</h5>
+			      			<p>19:00 - 19:45:{{m.h1_Noturno}}</p>
+							<p>19:45 - 20:30:{{m.h2_Noturno}}</p>
+							<p>20:45 - 21:30:{{m.h3_Noturno}}</p>
+							<p>21:30 - 22:15:{{m.h4_Noturno}}</p>
+			      		</div>
+		    		</div>
+		    		<div class="modal-footer">
+		    			<a href="{% url 'reservar_materiais' %}" class="modal-action modal-close waves-effect waves-green btn-flat">Reservar</a>
+		      			<a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Fechar</a>
+		    		</div>
+	    	</div>
+	    </div>
+			<td><a class="waves-effect waves-light btn">Reservar</a></td>
+			
+		</tr>
+		
+		
+		
+		{% endfor %}
+	</tbody>
+
+</table>
+<script type="text/javascript">$(document).ready(function(){
+    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+  });
+ </script>
+{% endblock %}
